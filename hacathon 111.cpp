@@ -20,12 +20,12 @@ double Dinner(double,double&,double&,int,double&);
  
 //Main function to call other functions
 int main(){
-cout<<"\t\t\tWELCOME\t\t\t"<<endl;
+cout<<"\t\t\t\t\t\tWELCOME\n........................................................................................................................"<<endl;
     //Variable Declaration
       
     int days=0;
     double airfareExpenses=0,rentalCarExpenses=0,privateCarExpenses=0,taxiExpenses=0,parkingExpenses=0,breakfastExpenses=0,LunchExpenses=0,dinnerExpenses=0,TotalGroupExpenses=0,TotalgroupAllowed=0,
-        conferenceExpenses=0,hotel=0,HotelAllowed=0,TotalExpenses,TotalAllowed,parkingAllowed,TaxiAllowed, departureTime,arrivalTime,breakfastAllowed,lunchAllowed,dinnerAllowed,prize,debt,
+        conferenceExpenses=0,hotel=0,HotelAllowed=0,TotalExpenses,TotalAllowed,parkingAllowed,TaxiAllowed, departureTime,arrivalTime,breakfastAllowed,lunchAllowed,dinnerAllowed,total_amount_saved,debt,
         airfareDeviation;
     parkingAllowed=days*20;
         TaxiAllowed=days*30;
@@ -33,25 +33,21 @@ cout<<"\t\t\tWELCOME\t\t\t"<<endl;
       
         string name;
         cout<<"\n Enter employee name\n";
-        cin>>name;
+        getline(cin,name);
         //Call Function To obtain information
         days=getDays(days);
         
         getTime(departureTime,arrivalTime);
-        
         airfareExpenses=getAirfare(airfareExpenses);
-        
-        rentalCarExpenses=carRental(rentalCarExpenses);
-        
-        privateCarExpenses=PrivateCarFee(privateCarExpenses);
-        
-        taxiExpenses=TaxiFees(taxiExpenses);
-        
-        parkingExpenses=ParkingFee(parkingExpenses);
-        
-        conferenceExpenses=ConferenceFee(conferenceExpenses);
-        
         HotelExpenses(hotel,HotelAllowed);
+        conferenceExpenses=ConferenceFee(conferenceExpenses);
+        taxiExpenses=TaxiFees(taxiExpenses);
+        privateCarExpenses=PrivateCarFee(privateCarExpenses);
+        rentalCarExpenses=carRental(rentalCarExpenses);
+        parkingExpenses=ParkingFee(parkingExpenses);
+       
+        
+        
         breakfastExpenses=Breakfast(breakfastExpenses,departureTime,arrivalTime,days,breakfastAllowed);
         LunchExpenses=Lunch(LunchExpenses,departureTime,arrivalTime,days,lunchAllowed);
         dinnerExpenses=Dinner(dinnerExpenses,departureTime,arrivalTime,days,dinnerAllowed);
@@ -65,13 +61,13 @@ cout<<"\t\t\tWELCOME\t\t\t"<<endl;
         TotalExpenses+=TotalExpenses;
         //Calculate Dept And Prize
         if(TotalAllowed>TotalExpenses)
-            prize=(TotalAllowed-TotalExpenses)*.1;
+            total_amount_saved=(TotalAllowed-TotalExpenses);
         else if(TotalAllowed<TotalExpenses)
             debt=TotalExpenses-TotalAllowed;
         else
         {
             debt=0;
-            prize=50;
+           total_amount_saved=0;
         }
  
  
@@ -79,6 +75,9 @@ cout<<"\t\t\tWELCOME\t\t\t"<<endl;
         cout<<"Employee: "<<name<<endl;
         cout<<"Total allowed "<<TotalAllowed<<endl;
         cout<<"Total Expenses "<<TotalExpenses<<endl;
+        cout<<"Total amount saved "<<total_amount_saved<<endl;
+        cout<<"total reimbursement "<<debt<<endl;
+        
          
     
     system("pause");
@@ -105,7 +104,7 @@ while (depart < 00.00 || depart > 23.59)
     cout << "Please enter a valid time in military format (HH.MM)\n";
     cin >> depart;
 }
-cout <<"enter arrival time in military format(HH.MM)";
+cout <<"enter arrival time in military format(HH.MM)\n";
 cin>> arrival;
 while (arrival < 00.00 || arrival > 23.59)
 {
@@ -127,7 +126,7 @@ double getAirfare(double airfare)
     cin>>choice;
     while((choice != 'y') && (choice != 'Y') && (choice!= 'N') && (choice != 'n'))//Input Validation
     {
-        cout<<"Enter Y for yes or N for no\n";
+        cout<<"enter 'Y/y' for Yes or 'N/n' for No. Please try again:\n";
         cin>>choice;
     }
     if(choice=='Y' || choice=='y')
@@ -150,11 +149,11 @@ double carRental(double rental)
     int days;
     double fee;
     char choice ;
-    cout<<" Did you rent a car? Enter Y for yes or N for no\n";
+    cout<<" Did you rent a car? enter 'Y/y' for Yes or 'N/n' for No.\n";
     cin>>choice;
     while((choice != 'y') && (choice != 'Y') && (choice!= 'N') && (choice != 'n'))//Input Validation
     {
-        cout<<"Enter Y for yes or N for no\n";
+        cout<<"enter 'Y/y' for Yes or 'N/n' for No.\n";
         cin>>choice;
     }
     if(choice=='Y' || choice=='y')
@@ -176,7 +175,7 @@ double PrivateCarFee(double carfee)
 {
     double Km, fee=0.6;
     char choice;
-    cout<<"Did you use a private vehicle? Enter Y for yes or N for no\n";
+    cout<<"Did you use a private vehicle? enter 'Y/y' for Yes or 'N/n' for No.\n";
     cin>>choice;
     while((choice != 'y') && (choice != 'Y') && (choice!= 'N') && (choice != 'n'))//Input Validation
     {
@@ -206,11 +205,11 @@ double ParkingFee(double parking)
 double TaxiFees(double taxi)
 {
     char choice;
-    cout<<"Did you use a taxi? Enter Y for yes or N for no.\n";
+    cout<<"Did you use a taxi? enter 'Y/y' for Yes or 'N/n' for No.\n";
     cin>>choice;
     while((choice != 'y') && (choice != 'Y') && (choice!= 'N') && (choice != 'n'))//Input Validation
     {
-        cout<<"Enter Y for yes or N for no.\n";
+        cout<<"enter 'Y/y' for Yes or 'N/n' for No.\n";
         cin>>choice;
     }
     if(choice=='Y' || choice=='y')
@@ -227,7 +226,7 @@ double TaxiFees(double taxi)
 double ConferenceFee(double conference)
 {
 	 char choice;
-    cout<<"Did you join a conference or seminar ? Enter Y for yes or N for no.\n";
+    cout<<"Did you join a conference or seminar ? enter 'Y/y' for Yes or 'N/n' for No.\n";
     cin>>choice;
     while((choice != 'y') && (choice != 'Y') && (choice!= 'N') && (choice != 'n'))//Input Validation
     {
