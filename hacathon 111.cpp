@@ -2,6 +2,7 @@
 #include<math.h>
 #include<iomanip>
 #include<string>
+// to format output
 using namespace std;
 // Functions Prototypes
 int getDays(int);
@@ -83,7 +84,7 @@ cout<<"\t\t\tWELCOME\t\t\t"<<endl;
     system("pause");
     return 0;
 }
- 
+// function to get the data required 
 int getDays(int numDays)
 {
     cout<<"How many days long was the trip?\n";
@@ -94,7 +95,7 @@ int getDays(int numDays)
     }
     return numDays;
 }
- 
+ // function to check the cost of the airfare
 void getTime(double &depart, double &arrival)
 {
     cout<<"Enter departure time in military format(HH.MM)\n";
@@ -143,7 +144,7 @@ double getAirfare(double airfare)
     
     return airfare;
 }
- 
+ // function to check the expenses of the car rented
 double carRental(double rental)
 { 
     int days;
@@ -170,7 +171,7 @@ double carRental(double rental)
      
     return rental;
 }
- 
+ // function to check the expenses for private car
 double PrivateCarFee(double carfee)
 {
     double Km, fee=0.6;
@@ -193,7 +194,7 @@ double PrivateCarFee(double carfee)
  
     return carfee;
 }
- 
+ // function to check the expenses for parking
 double ParkingFee(double parking)
 {
     cout<<" Enter Parking expenses. \n";
@@ -201,7 +202,7 @@ double ParkingFee(double parking)
     return parking;
  
 }
- 
+ // function to check the expenses for taxi
 double TaxiFees(double taxi)
 {
     char choice;
@@ -222,7 +223,7 @@ double TaxiFees(double taxi)
  
     return taxi;
 }
- 
+ // function to check the cost for the seminar
 double ConferenceFee(double conference)
 {
 	 char choice;
@@ -247,7 +248,7 @@ else if (choice=='N' || choice=='n')
      conference=0;
     return conference;
 }
- 
+ // function to check the hotel expenses
 void HotelExpenses(double &HotelSpent, double &HotelAllowed){
 
     int nights;
@@ -261,7 +262,7 @@ void HotelExpenses(double &HotelSpent, double &HotelAllowed){
      
  
 }
- 
+ // total expenses for breakfast
 double Breakfast(double BreakfastExpenses, double &departure, double &arrival,int tripDays,double &allowedBreakfast)
 {
     int breakfastdays;
@@ -283,7 +284,7 @@ double Breakfast(double BreakfastExpenses, double &departure, double &arrival,in
     cout<<BreakfastExpenses;
     return BreakfastExpenses;
 }
- 
+ // total expenses for lunch
 double Lunch(double LunchExpenses, double &departure, double &arrival,int tripDays,double &allowedLunch){
 
     int lunchdays;
@@ -305,7 +306,7 @@ double Lunch(double LunchExpenses, double &departure, double &arrival,int tripDa
     cout<<LunchExpenses;
     return LunchExpenses;
 }
- 
+ // total expenses for dinner
 double Dinner(double DinnerExpenses, double &departure, double &arrival,int tripDays,double &allowedDinner)
 {
     int dinnerdays;
